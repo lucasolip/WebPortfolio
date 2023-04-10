@@ -1,0 +1,131 @@
+html,
+body {
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #0a0a0a #282828;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #282828;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0a0a0a;
+    border-radius: 20px;
+    border: 2px solid #282828;
+}
+
+#navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+
+    text-align: center;
+
+    background-color: #0f0f0fcc;
+    color: #fafafa
+}
+
+#navBar a {
+    padding: 16px;
+}
+
+#navBar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 30%;
+    padding: 16px;
+}
+
+#navCanvas {
+    position: fixed;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./media/images/background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#aboutMe {
+    display: flex;
+    /* flex: 1 1 0px; */
+    z-index: 5;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 32px;
+    margin: 100vh 10% 0 10%;
+    background-color: #0f0f0faa;
+    color: #fafafa;
+    backdrop-filter: blur(10px);
+}
+
+#aboutMe img {
+    border-radius: 50%;
+    width: 240px;
+    height: auto;
+}
+
+#aboutMeProfile {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 0 0 1%;
+}
+
+#aboutMeContent {
+    text-align: justify;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+
+@media screen and (orientation:portrait) {
+    #navBar {
+        font-size: 38pt;
+        padding: 32px;
+    }
+
+    #navBar a {
+        padding: 32px;
+    }
+
+    #navBar img {
+        width: 128px;
+        height: 128px;
+    }
+
+    #aboutMe {
+        font-size: 38pt;
+        flex-wrap: wrap;
+        margin: 100vh 0 0 0;
+    }
+
+    #aboutMe img {
+        width: 480px;
+    }
+
+    #aboutMeContent {
+        flex-wrap: wrap;
+        padding: 0 64px 0 64px;
+    }
+}
