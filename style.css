@@ -4,6 +4,7 @@ body {
     flex-flow: column;
     margin: 0;
     padding: 0;
+    font-family: Lato;
     scrollbar-width: thin;
     scrollbar-color: #0a0a0a #282828;
 }
@@ -53,14 +54,9 @@ body {
 
 #navCanvas {
     position: fixed;
+    display: block;
     z-index: 2;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("./media/images/background.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: 0x56caf5;
 }
 
 #aboutMe {
@@ -98,6 +94,17 @@ body {
     padding-left: 10%;
 }
 
+#nameTitle {
+    z-index: 3;
+    position: fixed;
+    top: 20%;
+    left: 120px;
+    font-size: 72pt;
+    width: 0;
+    color: #efefef;
+    text-shadow: 4px 4px #4c4c4c;
+}
+
 
 @media screen and (orientation:portrait) {
     #navBar {
@@ -127,5 +134,9 @@ body {
     #aboutMeContent {
         flex-wrap: wrap;
         padding: 0 64px 0 64px;
+    }
+
+    #nameTitle {
+        display: none;
     }
 }
