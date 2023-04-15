@@ -158,7 +158,9 @@ body {
     }
 
     #projects {
-        margin: 90vh 0 0 0;
+        margin-bottom: 0;
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .contentContainer {
@@ -177,7 +179,7 @@ body {
         font-size: 24pt;
         width: auto;
         left: 0;
-        top: 85vh;
+        top: 85%;
         text-align: center;
         color: #efefef;
         text-shadow: 4px 4px #4c4c4c;
