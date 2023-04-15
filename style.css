@@ -7,6 +7,8 @@ body {
     font-family: Lato;
     scrollbar-width: thin;
     scrollbar-color: #0a0a0a #282828;
+    background-color: #56caf5;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -27,22 +29,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
     right: 0;
     margin: 0;
-
     text-align: center;
-
     background-color: #0f0f0fcc;
     color: #fafafa
 }
 
 #navBar a {
     padding: 16px;
+    text-decoration: none;
+    color: #fafafa;
+}
+
+#navBar a:hover {
+    border-radius: 100%;
+    text-shadow: 4px 4px 10px black,
+        -4px -4px 10px black;
+    font-size: 14pt;
 }
 
 #navBar img {
@@ -56,20 +64,24 @@ body {
     position: fixed;
     display: block;
     z-index: 2;
-    background-color: 0x56caf5;
+    background-color: #56caf5;
 }
 
-#aboutMe {
+.contentContainer {
     display: flex;
-    /* flex: 1 1 0px; */
     z-index: 5;
     justify-content: space-evenly;
     align-items: center;
     padding: 32px;
-    margin: 90vh 10% 0 10%;
+    margin: 16px 15% 0 15%;
     background-color: #0f0f0faa;
+    font-size: 14pt;
     color: #fafafa;
     backdrop-filter: blur(10px);
+}
+
+#projects {
+    margin: 100vh 15% 0 15%;
 }
 
 #aboutMe img {
@@ -94,6 +106,14 @@ body {
     padding-left: 10%;
 }
 
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
 #nameTitle {
     z-index: 3;
     position: fixed;
@@ -103,40 +123,75 @@ body {
     width: 0;
     color: #efefef;
     text-shadow: 4px 4px #4c4c4c;
+    transition: opacity 0.5s;
 }
 
+#topButton {
+    z-index: 5;
+    display: inline-block;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: #0f0f0faa;
+    border-radius: 100%;
+    transition: opacity 0.5s;
+}
+
+#topButton>img {
+    width: 64px;
+    height: 64px;
+}
 
 @media screen and (orientation:portrait) {
     #navBar {
-        font-size: 38pt;
-        padding: 32px;
+        justify-content: space-evenly;
     }
 
     #navBar a {
-        padding: 32px;
+        padding: 8px;
     }
 
     #navBar img {
-        width: 128px;
-        height: 128px;
+        width: 32px;
+        height: 32px;
+        padding: 8px;
     }
 
-    #aboutMe {
-        font-size: 38pt;
+    #projects {
+        margin: 90vh 0 0 0;
+    }
+
+    .contentContainer {
         flex-wrap: wrap;
-        margin: 70vh 0 0 0;
-    }
-
-    #aboutMe img {
-        width: 480px;
+        margin: 16px 0 0 0;
+        backdrop-filter: none;
     }
 
     #aboutMeContent {
         flex-wrap: wrap;
-        padding: 0 64px 0 64px;
+        padding: 0 0 0 0;
     }
 
     #nameTitle {
-        display: none;
+        position: relative;
+        font-size: 24pt;
+        width: auto;
+        left: 0;
+        top: 85vh;
+        text-align: center;
+        color: #efefef;
+        text-shadow: 4px 4px #4c4c4c;
+        transition: opacity 1.0s;
+    }
+
+    #topButton {
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }
