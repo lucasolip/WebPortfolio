@@ -5,52 +5,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Lucas Olivares Pérez">
-    <meta name="description" content="Desarrollador de software, con especial interés en diseño de interacción, 3D e interfaces
-    gráficas avanzadas">
+    <meta name="description" content="Desarrollador de software, con especial interés en diseño de interacción, gráficos 3D e interfaces
+    de usuario avanzadas">
     <meta name="keywords"
-        content="Software, Computación, Ingeniería, Arte, 3D, Gráficos, GLSL, Shaders, C++, C#, Javascript, Interacción, UI, UX, CG">
+        content="Software, Computación, Ingeniería, Arte, Videojuegos, 3D, Gráficos, GLSL, Shaders, C++, C#, Javascript, Interacción, UI, UX, CG">
     <title>Lucas Olivares Pérez</title>
     <link rel="icon" type="image/x-icon" href="./media/images/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="scene.js"></script>
-    <script src="animation.js"></script>
 </head>
 
 <body>
     <nav id="navBar">
-        <img src="./media/images/someone.jpg">
+        <!--img src="./media/images/someone.jpg"-->
         <a href="#projects">Proyectos</a>
         <a href="#aboutMe">Sobre mí</a>
         <a href="#contact">Contacto</a>
+        <a href="./english.html">English</a>
     </nav>
     <h1 id="nameTitle">Lucas Olivares Pérez</h1>
     <div id="projects" class="contentContainer">
         <h2>Proyectos</h2>
-        <div class="projectCard"></div>
+        <div id="project1" class="projectCard">
+            <div class="front">
+                <div class="frontTitle">
+                    <h2>Esta web</h2>
+                    <h3>2023</h3>
+                </div>
+                <img class="projectImage" src="./media/images/project1.jpg">
+            </div>
+            <div class="back">
+                <p class="projectDescription">Web portfolio para mostrar proyectos. Contiene una escena de demostración
+                    programada en Three.js con modelos, texturas y shaders originales.</p>
+                <span class="projectTechnologies">
+                    Three.js, GLSL, Blender, HTML, CSS, Javascript
+                </span>
+            </div>
+        </div>
+        <div id="project2" class="projectCard">
+            <div class="front">
+                <div class="frontTitle">
+                    <h2>GeoEngine</h2>
+                    <h3>2022-2023</h3>
+                </div>
+                <img class="projectImage" src="./media/images/project2.jpg">
+            </div>
+            <div class="back">
+                <p class="projectDescription">Proyecto colaborativo entre la ULPGC y una empresa externa. Motor 3D
+                    construido en OpenGL para la visualización de grandes nubes de puntos.</p>
+                <span class="projectTechnologies">
+                    C++, OpenGL, GLSL, Qt, WebAssembly
+                </span>
+            </div>
+        </div>
     </div>
+
     <div id="aboutMe" class="contentContainer">
         <div id="aboutMeProfile">
-            <img src="./media/images/someone.jpg">
+            <img src="./media/images/lucas.jpg">
         </div>
         <div id="aboutMeContent">
             <h2>Sobre mí</h2>
-            <p>Desarrollador de software, con especial interés en diseño de interacción, 3D e interfaces
-                gráficas avanzadas.</p>
-            <p>Estudié ingeniería informática en la Universidad de Las Palmas de Gran Canaria, mención en computación.
-                Desde pequeño siempre me interesaron los videojuegos, las historias y la música.</p>
-            <p>Me fascina lo que son capaces de lograr los ordenadores, por eso me especialicé en gráficos y algoritmos.
+            <p>¡Hola! Soy Lucas. Desarrollador de software, especialmente diseño de interacción, gráficos 3D e
+                interfaces de usuario avanzadas.</p>
+            <p>Me gradué en ingeniería informática en la Universidad de Las Palmas de Gran Canaria. Me interesan los
+                proyectos particularmente visuales e interactivos como videojuegos y VFX.</p>
+            <p>Siempre me han encantado los videojuegos, las historias y la música. Me fascina lo que son
+                capaces de lograr los ordenadores, por eso me especialicé en gráficos y algoritmos.
                 Todavía tengo mucho que aprender y muchas ganas de trabajar en equipo.</p>
             <p>Probablemente lleves algún dispositivo ahora mismo en tus manos. ¿Y si lo aprovechamos para sacar
                 sonrisas a la gente?</p>
         </div>
     </div>
     <div id="contact" class="contentContainer">
-
+        <h2>Contacto:</h2>
+        <a href="mailto:lucasolipdev@gmail.com">
+            Correo
+            <img width="16px" src="./media/images/mail.png">
+        </a>
+        <a href="https://www.linkedin.com/in/lucasolivaresperez">LinkedIn</a>
+        <a href="https://github.com/lucasolip">GitHub</a>
     </div>
     <a id="topButton" class="hidden" href="#top" title="Volver arriba">
-        <img id="topButtonImage" src="media/images/arrow.svg"></svg>
+        <img id="topButtonImage" src="media/images/arrow.svg">
+    </a>
+    <a id="pauseButton" class="visible" title="Pausar ejecución">
+        <img id="pauseButtonImage" src="media/images/pause.svg">
     </a>
 
+    <script src="animation.js"></script>
 </body>
 
 </html>

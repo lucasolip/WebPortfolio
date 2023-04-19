@@ -22,7 +22,7 @@ const loadMaterials = function () {
     leavesMaterial = new THREE.MeshStandardMaterial({
         map: textureLoader.load('media/textures/LeavesColorCompressed.png'),
         normalMap: textureLoader.load('media/textures/LeavesNormalCompressed.png'),
-        alphaTest: 0.5,
+        alphaTest: 0.9,
         side: THREE.DoubleSide,
         roughness: 0.5
     });
@@ -96,7 +96,7 @@ const loadMaterialsMobile = function () {
     leavesMaterial = new THREE.MeshPhongMaterial({
         map: textureLoader.load('media/textures/LeavesColorCompressed.png'),
         normalMap: textureLoader.load('media/textures/LeavesNormalCompressed.png'),
-        alphaTest: 0.5,
+        alphaTest: 0.9,
         side: THREE.DoubleSide
     });
     leavesMaterial.onBeforeCompile = (shader) => {

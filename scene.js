@@ -5,8 +5,7 @@ import * as TWEEN from './tween.esm.js'
 import { loadSkybox, loadObjects, leavesMaterial, waterMaterial } from "./LoadObjects.js"
 import mobile from './SystemCheck.js'
 
-var backgroundColor = 0x56caf5;
-console.log(mobile);
+var backgroundColor = 0x9fd9f5;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.toneMapping = THREE.ReinhardToneMapping;
@@ -52,6 +51,8 @@ controls.target.set(0, 0.5, 0);
 camera.position.set(-3, 1.5, -6);
 controls.update();
 renderer.domElement.style.touchAction = 'pan-down';
+if (renderer.domElement.style.touchAction === 'none')
+    renderer.domElement.style.touchAction = 'pan-y';
 
 var width = window.innerWidth, height = window.innerHeight;
 
@@ -64,11 +65,12 @@ function updateWindowSize() {
 
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
+    if (isPaused) render(0);
 }
 
-function animate(time) {
-    requestAnimationFrame(animate);
+let isPaused = false;
 
+function render(time) {
     controls.update();
 
     TWEEN.update(time);
@@ -84,6 +86,24 @@ function animate(time) {
     renderer.render(scene, camera);
 }
 
+function animate(time) {
+    if (!isPaused) {
+        requestAnimationFrame(animate);
+        render(time);
+    }
+}
+
 onresize = updateWindowSize;
+
+let pauseButton = document.getElementById("pauseButton");
+pauseButton.onclick = function () {
+    isPaused = !isPaused;
+    if (isPaused) {
+        pauseButton.lastElementChild.src = "./media/images/play.svg"
+    } else {
+        pauseButton.lastElementChild.src = "./media/images/pause.svg"
+        animate();
+    }
+};
 
 animate();
