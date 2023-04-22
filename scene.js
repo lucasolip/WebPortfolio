@@ -10,7 +10,6 @@ let pixelRatio = window.devicePixelRatio;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio(pixelRatio);
-console.log(window.devicePixelRatio);
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -80,11 +79,9 @@ function adaptPixelRatio(time) {
     if (fps < 25 && pixelRatio === window.devicePixelRatio) {
         pixelRatio = 1;
         renderer.setPixelRatio(pixelRatio);
-        console.log("Down");
     } else if (fps >= 30 && window.devicePixelRatio > 1 && pixelRatio === 1) {
         pixelRatio = window.devicePixelRatio;
         renderer.setPixelRatio(pixelRatio);
-        console.log("Up");
     }
 }
 
