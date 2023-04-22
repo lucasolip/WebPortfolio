@@ -5,9 +5,12 @@ import * as TWEEN from './tween.esm.js'
 import { loadSkybox, loadObjects, leavesMaterial, waterMaterial } from "./LoadObjects.js"
 import mobile from './SystemCheck.js'
 
-var backgroundColor = 0x9fd9f5;
+const backgroundColor = 0x9fd9f5;
+let pixelRatio = window.devicePixelRatio;
 
-var renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer();
+renderer.setPixelRatio(pixelRatio);
+console.log(window.devicePixelRatio);
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,13 +25,13 @@ if (!mobile) {
 
 document.body.appendChild(renderer.domElement);
 
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-var ambientLight = new THREE.AmbientLight(backgroundColor, 0.4);
+const ambientLight = new THREE.AmbientLight(backgroundColor, 0.4);
 scene.add(ambientLight);
 
-var directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+let directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
 if (mobile)
     directionalLight.position.set(1, 1, -0.5);
 else {
@@ -54,7 +57,7 @@ renderer.domElement.style.touchAction = 'pan-down';
 if (renderer.domElement.style.touchAction === 'none')
     renderer.domElement.style.touchAction = 'pan-y';
 
-var width = window.innerWidth, height = window.innerHeight;
+let width = window.innerWidth, height = window.innerHeight;
 
 function updateWindowSize() {
     if (window.innerWidth !== width || window.innerHeight !== height) {
@@ -69,8 +72,25 @@ function updateWindowSize() {
 }
 
 let isPaused = false;
+let previousTime = 0;
+
+function adaptPixelRatio(time) {
+    let fps = 1000 / (time - previousTime);
+    previousTime = time;
+    if (fps < 25 && pixelRatio === window.devicePixelRatio) {
+        pixelRatio = 1;
+        renderer.setPixelRatio(pixelRatio);
+        console.log("Down");
+    } else if (fps >= 30 && window.devicePixelRatio > 1 && pixelRatio === 1) {
+        pixelRatio = window.devicePixelRatio;
+        renderer.setPixelRatio(pixelRatio);
+        console.log("Up");
+    }
+}
 
 function render(time) {
+    adaptPixelRatio(time);
+
     controls.update();
 
     TWEEN.update(time);
