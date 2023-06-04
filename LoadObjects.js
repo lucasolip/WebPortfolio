@@ -161,7 +161,6 @@ const loadSkybox = function (renderer, scene) {
     pmremGenerator.compileEquirectangularShader();
     new RGBELoader()
         .load('./media/textures/wasteland_clouds_puresky_1k.hdr', function (texture) {
-
             var envMap = pmremGenerator.fromEquirectangular(texture).texture;
 
             scene.background = envMap;
@@ -175,7 +174,7 @@ const loadSkybox = function (renderer, scene) {
 const objLoader = new OBJLoader(loadingManager);
 const textureLoader = new THREE.TextureLoader(loadingManager);
 const loadObjects = function (renderer, scene) {
-    function loadObject(path, material, shadow) {
+    function loadObject(path, material, shadow, transparent) {
         objLoader.load(path, function (object) {
             object.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
@@ -184,6 +183,7 @@ const loadObjects = function (renderer, scene) {
                     child.material = material;
                     material.transparent = true;
                     material.opacity = 0;
+                    child.transparentObject = transparent;
                 }
             });
             scene.add(object);
@@ -197,6 +197,9 @@ const loadObjects = function (renderer, scene) {
                     object.traverse(function (child) {
                         if (child instanceof THREE.Mesh) {
                             child.material.opacity = opacityAnimation._object.opacity;
+                            if (opacityAnimation._object.opacity == 1 && !child.transparentObject) {
+                                child.material.transparent = false;
+                            }
                         }
                     })
                 })
@@ -209,12 +212,12 @@ const loadObjects = function (renderer, scene) {
     else
         loadMaterials();
 
-    loadObject('media/objects/island.obj', islandMaterial, true);
-    loadObject('media/objects/trunk.obj', trunkMaterial, true);
-    loadObject('media/objects/leaves.obj', leavesMaterial, true);
-    loadObject('media/objects/water.obj', waterMaterial, false);
-    loadObject('media/objects/rock1.obj', rockMaterial, true);
-    loadObject('media/objects/rock2.obj', rockMaterial, true);
+    loadObject('media/objects/island.obj', islandMaterial, true, false);
+    loadObject('media/objects/trunk.obj', trunkMaterial, true, false);
+    loadObject('media/objects/leaves.obj', leavesMaterial, true, true);
+    loadObject('media/objects/water.obj', waterMaterial, false, true);
+    loadObject('media/objects/rock1.obj', rockMaterial, true, false);
+    loadObject('media/objects/rock2.obj', rockMaterial, true, false);
 }
 
 var islandMaterial = null;
