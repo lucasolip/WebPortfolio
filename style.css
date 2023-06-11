@@ -280,6 +280,7 @@ a:hover {
     background-color: #f8f4d9;
     border-radius: 16px;
     flex-shrink: 1;
+    font-size: inherit;
 }
 
 .frontTitle>h2 {
@@ -304,6 +305,13 @@ a:hover {
 
 .projectDescription {
     margin: 16px;
+}
+
+.projectDescription>a {
+    color: brown;
+    font-size: inherit;
+    padding: inherit;
+    text-decoration: underline;
 }
 
 .projectTechnologies {

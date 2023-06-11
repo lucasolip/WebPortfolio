@@ -31,7 +31,6 @@
 
 <body>
     <nav id="navBar">
-        <!--img src="./media/images/someone.jpg"-->
         <a href="#projects">Projects</a>
         <a href="#aboutMe">About me</a>
         <a href="#contact">Contact</a>
@@ -62,7 +61,10 @@
                     <h2>GeoEngine</h2>
                     <h3>2022-2023</h3>
                 </div>
-                <img class="projectImage" src="./media/images/project2.jpg">
+                <video class="projectImage" autoplay muted loop poster="./media/images/project2.jpg">
+                    <source src="./media/project2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <div class="back">
                 <p class="projectDescription">Collaborative project between ULPGC and an external company. 3D engine
@@ -70,6 +72,26 @@
                 <span class="projectTechnologies">
                     C++, OpenGL, GLSL, Qt, WebAssembly
                 </span>
+            </div>
+        </div>
+        <div id="project0" class="projectCard">
+            <div class="front">
+                <a href="https://lucasolip.itch.io/terrarium" target="_blank" class="frontTitle">
+                    <h2>Terrarium</h2>
+                    <h3>2022</h3>
+                </a>
+                <video class="projectImage" autoplay muted loop poster="./media/images/project0.jpg">
+                    <source src="./media/project3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="back">
+                <p class="projectDescription">Capstone project for university. Virtual pet simulation game prototype,
+                    using Unity3D and custom shaders.
+                    <a href="https://lucasolip.itch.io/terrarium">Itch.io site</a>
+                    <span class="projectTechnologies">
+                        Unity3D, C#, HLSL, WebGL, Blender
+                    </span>
             </div>
         </div>
     </div>
