@@ -62,7 +62,9 @@ var properties = {
   darknessThreshold: 0.0,
   lightAbsortionThroughCloud: 0.5,
   lightAbsortionToSource: 1.0,
-  phaseVal: 0.5
+  phaseVal: 0.5,
+  lightColor: '#ffffff',
+  backgroundColor: backgroundColor
 };
 
 function mod(n, m) {
@@ -193,7 +195,8 @@ loadFile('3DTextureViewer.frag', (fragShader) => {
           minBounds: { value: properties.cloudSize.clone().multiplyScalar(-0.5) },
           maxBounds: { value: properties.cloudSize.clone().multiplyScalar(0.5) },
           lightDir: { value: new THREE.Vector3(1.0, 1.0, 1.0) },
-          lightColor: { value: new THREE.Vector3(1.0, 1.0, 1.0) },
+          lightColor: { value: new THREE.Color(properties.lightColor) },
+          backgroundColor: { value: new THREE.Color(properties.backgroundColor) },
           numStepsLight: { value: properties.numStepsLight },
           darknessThreshold: { value: properties.darknessThreshold },
           lightAbsortionThroughCloud: { value: properties.lightAbsortionThroughCloud },
@@ -270,14 +273,17 @@ loadFile('3DTextureViewer.frag', (fragShader) => {
       lightingFolder.add(properties, 'darknessThreshold', 0, 1).onChange(function (value) {
         planeMaterial.uniforms.darknessThreshold.value = properties.darknessThreshold;
       });
-      lightingFolder.add(properties, 'lightAbsortionThroughCloud', 0, 1).onChange(function (value) {
+      lightingFolder.add(properties, 'lightAbsortionThroughCloud', 0, 1).name("Cloud absortion").onChange(function (value) {
         planeMaterial.uniforms.lightAbsortionThroughCloud.value = properties.lightAbsortionThroughCloud;
       });
-      lightingFolder.add(properties, 'lightAbsortionToSource', 0, 1).onChange(function (value) {
+      lightingFolder.add(properties, 'lightAbsortionToSource', 0, 1).name("Light absortion").onChange(function (value) {
         planeMaterial.uniforms.lightAbsortionToSource.value = properties.lightAbsortionToSource;
       });
-      lightingFolder.add(properties, 'phaseVal', 0, 1).onChange(function (value) {
-        planeMaterial.uniforms.phaseVal.value = properties.phaseVal;
+      lightingFolder.addColor(properties, 'lightColor').name("Color").onChange(function (value) {
+        planeMaterial.uniforms.lightColor.value = new THREE.Color(properties.lightColor);
+      });
+      lightingFolder.addColor(properties, 'backgroundColor').name("Background Color").onChange(function (value) {
+        planeMaterial.uniforms.backgroundColor.value = new THREE.Color(properties.backgroundColor);
       });
       lightingFolder.open();
 

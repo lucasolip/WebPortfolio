@@ -24,6 +24,7 @@ uniform sampler3D detailTex;
 // Lighting
 uniform vec3 lightDir;
 uniform vec3 lightColor;
+uniform vec3 backgroundColor;
 uniform int numStepsLight;
 uniform float darknessThreshold;
 uniform float lightAbsortionThroughCloud;
@@ -105,7 +106,7 @@ vec4 raymarch(vec3 eye, vec3 viewRayDirection) {
     }
 
     vec3 cloudCol = lightEnergy * lightColor;
-    vec3 col = vec3(0.0) * transmittance + cloudCol;
+    vec3 col = backgroundColor * transmittance + cloudCol;
     return vec4(col, 1.0);
 }
 
