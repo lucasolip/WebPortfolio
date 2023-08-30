@@ -288,7 +288,7 @@ a:hover {
     transition: transform 2.0s ease-out;
 }
 
-.projectImage:hover {
+img.projectImage:hover {
     transform: scale(1.1);
 }
 

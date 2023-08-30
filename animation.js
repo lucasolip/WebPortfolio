@@ -30,3 +30,28 @@ projectCards.forEach((card) => {
         }
     }
 });
+
+var videos = document.querySelectorAll('.projectImage');
+
+function hoverVideo(e) {
+    let video = e.srcElement;
+    if (video.nodeName == "VIDEO") {
+        let playing = video.currentTime > 0 && !video.paused && !video.ended
+            && video.readyState > video.HAVE_CURRENT_DATA;
+        if (!playing) video.play();
+    }
+}
+
+function hideVideo(e) {
+    let video = e.srcElement;
+    if (video.nodeName == "VIDEO") {
+        let playing = video.currentTime > 0 && !video.paused && !video.ended
+            && video.readyState > video.HAVE_CURRENT_DATA;
+        if (playing) video.pause();
+    }
+}
+
+videos.forEach(function (videoElement) {
+    videoElement.addEventListener('pointerenter', hoverVideo);
+    videoElement.addEventListener('pointerleave', hideVideo);
+});
