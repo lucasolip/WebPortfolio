@@ -115,14 +115,11 @@ float raymarch(vec3 eye, vec3 viewRayDirection) {
     for (int i = 0; i < maxMarchingSteps; i++) {
         float dist = sceneSDF(eye + depth * viewRayDirection);
         if (dist < EPSILON) {
-            // We're inside the scene surface!
             return mix(float(i)/float(maxMarchingSteps), depth, phongShaded);
         }
-        // Move along the view ray
         depth += dist;
 
         if (depth >= end) {
-            // Gone too far; give up
             return mix(float(i)/float(maxMarchingSteps), end, phongShaded);
         }
     }
@@ -130,7 +127,6 @@ float raymarch(vec3 eye, vec3 viewRayDirection) {
 }
 
 mat4 virtualViewMatrix(vec3 eye, vec3 center, vec3 up) {
-    // Based on gluLookAt man page
     vec3 f = normalize(center - eye);
     vec3 s = normalize(cross(f, up));
     vec3 u = cross(s, f);
