@@ -129,6 +129,10 @@ a:hover {
     flex-flow: column;
 }
 
+#experiments {
+    flex-flow: column;
+}
+
 #aboutMe img {
     border-radius: 50%;
     width: 240px;
@@ -197,7 +201,8 @@ a:hover {
     height: 48px;
 }
 
-.projectCard {
+.projectCard,
+.experimentCard {
     display: flex;
     width: 90%;
     height: 200px;
@@ -238,6 +243,10 @@ a:hover {
 .front:hover:after,
 .back:hover:after {
     background-color: var(--button-bg-focus);
+}
+
+.staticCard:after {
+    width: 0;
 }
 
 .front {
@@ -323,7 +332,8 @@ img.projectImage:hover {
     }
 
     #navBar a {
-        padding: 8px;
+        padding: 8px 4px 8px 4px;
+        font-size: 11pt;
     }
 
     #navBar img {
@@ -332,7 +342,7 @@ img.projectImage:hover {
         padding: 8px;
     }
 
-    #projects {
+    #projects, #experiments {
         margin-bottom: 0;
         margin-right: 0;
         margin-left: 0;
