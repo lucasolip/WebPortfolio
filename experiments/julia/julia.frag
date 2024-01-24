@@ -8,7 +8,7 @@ uniform vec2 zoom;
 uniform vec2 c;
 
 const vec2 origin = vec2(0.0, 0.0);
-const float maxIter = 512.0;
+const float maxIter = 256.0;
 
 vec2 computeIteration(vec2 p) {
   return vec2(p.x*p.x - p.y*p.y, 2.0*p.x*p.y) + c;

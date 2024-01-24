@@ -7,7 +7,7 @@ let offsetAmount = 2.5;
 let zoomX = 1.0;
 let zoomY = 1.0;
 let zoomAmount = 1.1;
-let prevC = []
+let maxZoom = 10.0;
 let state = false;
 
 function setup() {
@@ -48,13 +48,22 @@ function draw() {
 
 function mouseWheel(event) {
   let e = event.delta;
+  let oldZoomX = zoomX;
   if (e < 0) {
     zoomX *= 1.0/zoomAmount;
   } else {
     zoomX *= zoomAmount;
+    if (zoomX > maxZoom) {
+      zoomX = oldZoomX;
+      return;
+    }
   }
   zoomY = (float(height)/float(width)) * zoomX;
   julia.setUniform("zoom", [zoomX, zoomY]);
+
+  xOffset += zoomX*Math.sign(-e)*float(mouseX - width/2.0)/(float(4.0*width));
+  yOffset += zoomY*Math.sign(e)*float(mouseY - height/2.0)/(float(4.0*height));
+  julia.setUniform("offset", [xOffset, yOffset]);
 }
 
 let initialDist = 0;
@@ -62,6 +71,7 @@ function touchStarted() {
   if (touches.length > 1) {
     initialDist = dist(touches[0].x, touches[0].y, touches[1].x, touches[1].y);
   }
+  return false;
 }
 
 let touchZoom = 1;
@@ -70,7 +80,12 @@ function touchMoved() {
     let newDist = dist(touches[0].x, touches[0].y, touches[1].x, touches[1].y);
     let diff = newDist - initialDist;
     touchZoom += diff * 0.1;
+    let oldZoomX = zoomX;
     zoomX = pow(1.0/zoomAmount, touchZoom);
+    if (zoomX > maxZoom) {
+      zoomX = oldZoomX;
+      return false;
+    }
     zoomY = (float(height)/float(width)) * zoomX;
     julia.setUniform("zoom", [zoomX, zoomY]);
     initialDist = newDist;

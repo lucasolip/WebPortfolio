@@ -38,7 +38,7 @@ controls.enablePan = false;
 controls.target.set(0, 0, 0);
 
 //controls.update() must be called after any manual changes to the camera's transform
-virtualCamera.position.set(8, 8, 18);
+virtualCamera.position.set(8, 8, 36);
 controls.update();
 
 // GUI and shader properties
@@ -213,6 +213,7 @@ loadFile('3DTextureViewer.frag', (fragShader) => {
       // Simple GUI
 
       const gui = new GUI();
+      gui.close();
 
       const noiseFolder = gui.addFolder('Worley Noise');
       noiseFolder.add(properties, 'slice', 0, 1).onChange(function (value) {
