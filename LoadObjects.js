@@ -1,6 +1,6 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.module.min.js"
 import { OBJLoader } from "/three/OBJLoader.js"
-import { RGBELoader } from "/three/RGBELoader.js"
+import { EXRLoader } from "/three/EXRLoader.js"
 import simplex2D from "/shaders/simplex2D.glsl.js"
 import * as TWEEN from '/tween.esm.js'
 import mobile from '/SystemCheck.js'
@@ -85,17 +85,17 @@ const loadMaterials = function () {
 const loadMaterialsMobile = function () {
     islandMaterial = new THREE.MeshPhongMaterial({
         map: textureLoader.load('/media/textures/IslandColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/IslandNormalCompressed.png')
+        normalMap: textureLoader.load('/media/textures/IslandNormalCompressed.webp')
     });
 
     trunkMaterial = new THREE.MeshPhongMaterial({
         map: textureLoader.load('/media/textures/TrunkColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/TrunkNormalCompressed.png')
+        normalMap: textureLoader.load('/media/textures/TrunkNormalCompressed.webp')
     });
 
     leavesMaterial = new THREE.MeshPhongMaterial({
         map: textureLoader.load('/media/textures/LeavesColorCompressed.png'),
-        normalMap: textureLoader.load('/media/textures/LeavesNormalCompressed.png'),
+        normalMap: textureLoader.load('/media/textures/LeavesNormalCompressed.webp'),
         alphaTest: 0.9,
         side: THREE.DoubleSide
     });
@@ -124,7 +124,7 @@ const loadMaterialsMobile = function () {
         map: textureLoader.load('/media/textures/WaterColor.jpg', function (texture) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         }),
-        normalMap: textureLoader.load('/media/textures/WaterNormalCompressed.png', function (texture) {
+        normalMap: textureLoader.load('/media/textures/WaterNormalCompressed.webp', function (texture) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         }),
         side: THREE.DoubleSide,
@@ -152,15 +152,15 @@ const loadMaterialsMobile = function () {
 
     rockMaterial = new THREE.MeshPhongMaterial({
         map: textureLoader.load('/media/textures/RockColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/RockNormalCompressed.png')
+        normalMap: textureLoader.load('/media/textures/RockNormalCompressed.webp')
     });
 }
 
 const loadSkybox = function (renderer, scene) {
     var pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
-    new RGBELoader()
-        .load('/media/textures/wasteland_clouds_puresky_1k.hdr', function (texture) {
+    new EXRLoader()
+        .load('/media/textures/wasteland_clouds_puresky_1k.exr', function (texture) {
             var envMap = pmremGenerator.fromEquirectangular(texture).texture;
 
             scene.background = envMap;
