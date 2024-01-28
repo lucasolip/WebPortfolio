@@ -1,9 +1,9 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.module.min.js"
 
-import { OrbitControls } from "./three/OrbitControls.js"
-import * as TWEEN from './tween.esm.js'
-import { loadSkybox, loadObjects, leavesMaterial, waterMaterial } from "./LoadObjects.js"
-import mobile from './SystemCheck.js'
+import { OrbitControls } from "/three/OrbitControls.js"
+import * as TWEEN from '/tween.esm.js'
+import { loadSkybox, loadObjects, leavesMaterial, waterMaterial } from "/LoadObjects.js"
+import mobile from '/SystemCheck.js'
 
 const backgroundColor = 0x9fd9f5;
 let pixelRatio = window.devicePixelRatio;
