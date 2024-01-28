@@ -10,18 +10,18 @@ const loadingManager = new THREE.LoadingManager();
 const loadMaterials = function () {
     islandMaterial = new THREE.MeshStandardMaterial({
         map: textureLoader.load('/media/textures/IslandColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/IslandNormalCompressed.png')
+        normalMap: textureLoader.load('/media/textures/IslandNormalCompressed.webp')
     });
 
     trunkMaterial = new THREE.MeshStandardMaterial({
         map: textureLoader.load('/media/textures/TrunkColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/TrunkNormalCompressed.png'),
+        normalMap: textureLoader.load('/media/textures/TrunkNormalCompressed.webp'),
         roughnessMap: textureLoader.load('/media/textures/TrunkRoughnessCompressed.png')
     });
 
     leavesMaterial = new THREE.MeshStandardMaterial({
         map: textureLoader.load('/media/textures/LeavesColorCompressed.png'),
-        normalMap: textureLoader.load('/media/textures/LeavesNormalCompressed.png'),
+        normalMap: textureLoader.load('/media/textures/LeavesNormalCompressed.webp'),
         alphaTest: 0.9,
         side: THREE.DoubleSide,
         roughness: 0.5
@@ -51,7 +51,7 @@ const loadMaterials = function () {
         map: textureLoader.load('/media/textures/WaterColor.jpg', function (texture) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         }),
-        normalMap: textureLoader.load('/media/textures/WaterNormalCompressed.png', function (texture) {
+        normalMap: textureLoader.load('/media/textures/WaterNormalCompressed.webp', function (texture) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         }),
         side: THREE.DoubleSide,
@@ -78,7 +78,7 @@ const loadMaterials = function () {
 
     rockMaterial = new THREE.MeshStandardMaterial({
         map: textureLoader.load('/media/textures/RockColor.jpg'),
-        normalMap: textureLoader.load('/media/textures/RockNormalCompressed.png')
+        normalMap: textureLoader.load('/media/textures/RockNormalCompressed.webp')
     });
 }
 
