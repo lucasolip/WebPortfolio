@@ -1,0 +1,80 @@
+<!DOCTYPE html5>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Olivares Pérez</title>
+    <script type="module" src="qr-scanner.min.js"></script>
+    <script type="module" src="qr-scanner-worker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" integrity="sha512-g2TeAWw5GPnX7z0Kn8nFbYfeHcvAu/tx6d6mrLe/90mkCxO+RcptyYpksUz35EO337F83bZwcmUyHiHamspkfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="inc/shim/Base64.js" type="text/javascript"></script>
+	<script src="inc/shim/Base64binary.js" type="text/javascript"></script>
+	<script src="inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+	<!-- midi.js package -->
+	<script src="js/midi/audioDetect.js" type="text/javascript"></script>
+	<script src="js/midi/gm.js" type="text/javascript"></script>
+	<script src="js/midi/loader.js" type="text/javascript"></script>
+	<script src="js/midi/plugin.audiotag.js" type="text/javascript"></script>
+	<script src="js/midi/plugin.webaudio.js" type="text/javascript"></script>
+	<script src="js/midi/plugin.webmidi.js" type="text/javascript"></script>
+	<!-- utils -->
+	<script src="js/util/dom_request_xhr.js" type="text/javascript"></script>
+	<script src="js/util/dom_request_script.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <h1>Leer QR</h1>
+        <video class="display" id="camera"></video>
+        <button id="scan">Escanear</button>
+        <p id="info">¡Escanea un QR!</p>
+        <button id="play" title="Reproducir" class="fa fa-play hidden"></button>
+        <input type="file" id="qr-image-input" accept="image/*">
+    </div>
+    <div class="mainContainer">
+        <h1>Crear QR</h1>
+        <canvas class="display" id="qrcode"></canvas>
+        <div id="record-buttons">
+            <button id="record" title="Grabar" class="fa fa-circle"></button>
+            <button id="start-again" title="Empezar desde el principio" class="fa fa-backward hidden"></button>
+            <button id="download" title="Descargar" class="fa fa-download hidden"></button>
+        </div>
+        <span id="stopwatch" class="hidden">00:00</span>
+        <div id="piano">
+            <div class="key" data-note="C4"></div>
+            <div class="key black" data-note="Db4"></div>
+            <div class="key" data-note="D4"></div>
+            <div class="key black" data-note="Eb4"></div>
+            <div class="key" data-note="E4"></div>
+            <div class="key" data-note="F4"></div>
+            <div class="key black" data-note="Gb4"></div>
+            <div class="key" data-note="G4"></div>
+            <div class="key black" data-note="Ab4"></div>
+            <div class="key" data-note="A4"></div>
+            <div class="key black" data-note="Bb4"></div>
+            <div class="key" data-note="B4"></div>
+            <div class="key" data-note="C5"></div>
+        </div>
+        <select id="instrument-select">
+            <option data-loaded="false" value="acoustic_grand_piano">Piano</option>
+            <option data-loaded="false" value="marimba">Marimba</option>
+            <option data-loaded="false" value="music_box">Caja de música</option>
+            <option data-loaded="false" value="electric_piano_1">Piano Eléctrico</option>
+            <option data-loaded="false" value="violin">Violín</option>
+            <option data-loaded="false" value="flute">Flauta</option>
+            <option data-loaded="false" value="acoustic_guitar_nylon">Guitarra Acústica</option>
+            <option data-loaded="false" value="trumpet">Trompeta</option>
+            <option data-loaded="false" value="voice_oohs">Voz</option>
+            <option data-loaded="false" value="harmonica">Harmónica</option>
+          </select>
+    </div>
+
+
+    <script type="module" src="controller.js"></script>
+</body>
+</html>

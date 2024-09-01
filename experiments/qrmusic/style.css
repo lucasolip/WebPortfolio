@@ -1,0 +1,121 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+    background-image: url(background.jpg);
+    font-family: sans-serif;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+#stopwatch {
+    font-size: 24pt;
+}
+
+button.fa {
+    font-size: 20pt;
+    border-radius: 100%;
+    aspect-ratio: 1;
+    text-align: center;
+}
+
+select, button, input::file-selector-button {
+    margin: 16px;
+    padding: 16px;
+    border: none;
+    border-radius: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #1c4690;
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+}
+
+select {
+    padding: 4px;
+    margin: 8px;
+}
+
+select:hover {
+    background-color: #306bd1;
+}
+
+button:active, input::file-selector-button:active {
+    background-color: #162a4d;
+}
+
+button:disabled {
+    background-color: #afbacc;
+}
+
+.mainContainer {
+    background-color: white;
+    width: fit-content;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 32px;
+    padding: 16px;
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+.display {
+    border-radius: 16px;
+    background-color: #dfdfdf;
+    max-width: 100%;
+}
+
+#qrcode {
+    width: 128px;
+    aspect-ratio: 1;
+}
+
+#piano {
+    display: flex;
+    position: relative; /* Ensure relative positioning for absolute children */
+    margin-top: 20px; /* Adjust margin as needed */
+    max-width: 100%;
+}
+
+.key {
+    width: 10vw;
+    height: 200px;
+    margin: 1px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    max-width: 40px;
+    min-width: 10px;
+}
+
+
+.key.black {
+    background: black;
+    z-index: 1;
+    height: 120px;
+    width: 8vw;
+    margin-left: -16px;
+    margin-right: -16px;
+    max-width: 30px;
+    min-width: 10px;
+}
+
+.key.pressed {
+    background: #ddd;
+}
+
+.key.black.pressed {
+    background: #333;
+}
