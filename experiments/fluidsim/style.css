@@ -4,7 +4,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: Lato, Arial, sans-serif;
-    background-color: var(--canvas-color);
+    background-color: #000;
 }
 canvas {
     position: fixed;
@@ -87,3 +87,27 @@ button:active {
     right: 4px;
     top: 4px;
 }
+
+.loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #FFF;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+} 
