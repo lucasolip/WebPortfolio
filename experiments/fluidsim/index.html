@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGPU Fluid Sim 3D</title>
+    <script src="gl-matrix-min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/media/images/favicon.ico">
+  </head>
+  <body>
+    <div id="fpsPanel" style="position: fixed;top: 8px;left: 8px;z-index: 2;color: white;"></div>
+    <button class="btn" id="options-button"><i class="fa fa-gear"></i></button>
+    <div id="error-panel" class="panel-container"><div class="panel"></div>
+    </div>
+    <div id="options-panel" class="panel-container" style="position: relative;">
+      <div class="panel" style="padding-top: 32px;">
+        <button id="close-options-button"><i class="fa fa-close"></i></button>
+        <div class="option-line">
+          Resolución
+          <select name="resolution" id="resolution-select">
+            <option value=32>32</option>
+            <option value=64>64</option>
+            <option value=128 selected>128</option>
+            <option value=256>256</option>
+          </select>
+        </div>
+        <div class="option-line">Iteraciones
+          <input type="range" min="1" max="30" value="15" class="slider" id="projection-steps-slider">
+        </div>
+        <div class="option-line">Mostrar FPS
+          <input type="checkbox" id="fps-checkbox" checked>
+        </div>
+        <div class="option-line">Pausar simulación
+          <input type="checkbox" id="pause-sim-checkbox">
+        </div>
+        <p style="margin: 8px 0 0 0">Click derecho para agregar densidad</p>
+      </div>
+    </div>
+    <canvas id="webgpu-canvas" oncontextmenu="return false;"></canvas>
+    <script type="module" src="webgpu.min.js"></script>
+  </body>
+</html>
