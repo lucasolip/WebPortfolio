@@ -7,9 +7,13 @@ uniform int fractalIterations;
 uniform int maxMarchingSteps;
 uniform bool phongShaded;
 
-float EPSILON = 0.001;
+float EPSILON = 0.0001;
 float start = 0.0;
-float end = 128.0;
+float end = 32.0;
+
+float rand(vec2 co) {
+    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+}
 
 float sphere(vec3 position, vec3 center, float radius) {
     return length(position - center) - radius;
@@ -111,7 +115,8 @@ vec3 phongIllumination(vec3 k_a, vec3 k_d, vec3 k_s, float alpha, vec3 p, vec3 e
 }
 
 float raymarch(vec3 eye, vec3 viewRayDirection) {
-    float depth = start;
+    float offsetModifier = rand(gl_FragCoord.xy) * 0.5;
+    float depth = start + offsetModifier;
     for (int i = 0; i < maxMarchingSteps; i++) {
         float dist = sceneSDF(eye + depth * viewRayDirection);
         if (dist < EPSILON) {
