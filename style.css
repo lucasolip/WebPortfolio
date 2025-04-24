@@ -125,11 +125,11 @@ a:hover {
 }
 
 #projects {
-    margin: 100vh 15% 0 15%;
     flex-flow: column;
 }
 
 #experiments {
+    margin: 100vh 15% 0 15%;
     flex-flow: column;
 }
 
